@@ -9,6 +9,8 @@ struct Product
 	int productQuantity;
 };
 
+void checkInput(string message);
+
 Product _Product[] = {};
 
 int numOfProducts = 0;
@@ -20,16 +22,13 @@ class Inventory
 public:
 	void addProduct()
 	{
-		cout << "Note: Non-negative integers only" << endl;
-		cout << "What is the ID?: ";
+		cout << "Enter ID (Nonnegative Integer): ";
 		while (!(cin >> _Product[numOfProducts].productID) || _Product[numOfProducts].productID < 0)
 		{
-			cout << "Invalid Input, Please enter a valid ID: ";
-			cin.clear();
-			cin.ignore(100, '\n');
+			checkInput("Enter a Valid ID: ");
 		}
 
-		cout << "What is the product name?: ";
+		cout << "Enter Product Name: ";
 		cin >> _Product[numOfProducts].productName;
 		// while (!(cin >> _Product[numOfProducts].productName))
 		// {
@@ -38,20 +37,16 @@ public:
 		// 	cin.ignore(100, '\n');
 		// }
 
-		cout << "What is the price?: ";
+		cout << "Enter Price: ";
 		while (!(cin >> _Product[numOfProducts].productPrice) || _Product[numOfProducts].productPrice < 0)
 		{
-			cout << "Invalid Input. Please enter a valid price: ";
-			cin.clear();
-			cin.ignore(100, '\n');
+			checkInput("Enter a Valid Price: ");
 		}
 
-		cout << "What is the quantity?: ";
+		cout << "Enter Quantity: ";
 		while (!(cin >> _Product[numOfProducts].productQuantity) || _Product[numOfProducts].productQuantity < 0)
 		{
-			cout << "Invalid Input. Please enter a valid quantity: ";
-			cin.clear();
-			cin.ignore(100, '\n');
+			checkInput("Enter a Valid Quantity: ");
 		}
 
 		numOfProducts += 1;
@@ -61,12 +56,10 @@ public:
 	void removeProduct()
 	{
 		cout << "Note: If ID Doesn't Exist, Nothing Will Delete" << endl;
-		cout << "Type product ID to remove product: ";
+		cout << "Type Product ID to Remove Product: ";
 		while (!(cin >> removeID))
 		{
-			cout << "Type a valid ID: ";
-			cin.clear();
-			cin.ignore(100, '\n');
+			checkInput("Enter a Valid ID: ");
 		}
 
 		for (int i = 0; i < numOfProducts; i++)
@@ -90,12 +83,10 @@ public:
 	void displayInfo()
 	{
 		cout << "Note: If ID Doesn't Exist, Nothing Will Display" << endl;
-		cout << "Type product ID to display info: ";
+		cout << "Type Product ID to Display Info: ";
 		while (!(cin >> displayID))
 		{
-			cout << "Type a valid ID: ";
-			cin.clear();
-			cin.ignore(100, '\n');
+			checkInput("Enter a Valid ID: ");
 		}
 
 		cout << "Product Info: " << endl;
@@ -117,7 +108,7 @@ public:
 
 	void displayInventory()
 	{
-		cout << "Full Inventory: " << endl;
+		cout << "Entire Inventory: " << endl;
 		cout << "--------------------" << endl;
 		for (int i = 0; i < numOfProducts; i++)
 		{
@@ -129,3 +120,11 @@ public:
 		}
 	};
 };
+
+void checkInput(string message)
+{
+	cout << "Invalid Input." << endl;
+	cout << message;
+	cin.clear();
+	cin.ignore(100, '\n');
+}

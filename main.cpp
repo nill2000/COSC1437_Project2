@@ -18,10 +18,7 @@ int main()
 		menuPrompt();
 		while (!(cin >> menuChoice) || menuChoice <= 0 || menuChoice >= 5)
 		{
-			cout << "Invalid Input. Type a Valid Input" << endl;
-			cout << "Menu Choice 1/2/3/4: ";
-			cin.clear();
-			cin.ignore(100, '\n');
+			checkInput("Menu Choice 1/2/3/4: ");
 		}
 
 		cout << endl;
@@ -45,10 +42,7 @@ int main()
 		cout << "Repeat Menu? Y/N: ";
 		while (!(cin >> repeatChoice) || toupper(repeatChoice) != 'Y' && toupper(repeatChoice) != 'N')
 		{
-			cout << "Invalid Input. Type a Valid Input" << endl;
-			cout << "Repeat Menu? Y/N: ";
-			cin.clear();
-			cin.ignore(100, '\n');
+			checkInput("Repeat Menu? Y/N: ");
 		}
 
 		if (toupper(repeatChoice) == 'N')

@@ -1,7 +1,8 @@
 #include <iostream>
 using namespace std;
 
-struct Product
+void checkInput(string message); // Function prototype that takes in a message
+struct Product					 // Struct named product
 {
 	int productID;
 	string productName;
@@ -9,23 +10,21 @@ struct Product
 	int productQuantity;
 };
 
-void checkInput(string message);
+Product _Product[] = {}; // Create a Product struct named _Product that is an array to group certain products
 
-Product _Product[] = {};
+int numOfProducts = 1; // Variable used to manipulate array contents in _Product[] (Using 1 instead there is no such thing as 0 products and readibility).
+int removeID;		   // Variable used to hold user input for ID to check which ID product to remove
+int displayID;		   // Variable used to hold user input for ID to check which ID product to display
 
-int numOfProducts = 0;
-int removeID;
-int displayID;
-
-class Inventory
+class Inventory // Inventory Class
 {
 public:
-	void addProduct()
+	void addProduct() // The function prompts the user to type an ID, name, price, and quantity for a product
 	{
 		cout << "Enter ID (Nonnegative Integer): ";
-		while (!(cin >> _Product[numOfProducts].productID) || _Product[numOfProducts].productID < 0)
+		while (!(cin >> _Product[numOfProducts].productID) || _Product[numOfProducts].productID < 0) // Code checks if ID is valid by checking if input is an integer and not negative
 		{
-			checkInput("Enter a Valid ID: ");
+			checkInput("Enter a Valid ID: "); // Notifies the user that the code is invalid and prompts the "argument" message about the error
 		}
 
 		cout << "Enter Product Name: ";
@@ -38,33 +37,32 @@ public:
 		// }
 
 		cout << "Enter Price: ";
-		while (!(cin >> _Product[numOfProducts].productPrice) || _Product[numOfProducts].productPrice < 0)
+		while (!(cin >> _Product[numOfProducts].productPrice) || _Product[numOfProducts].productPrice < 0) // Code checks if the price is valid by checking if input is an integer and not negative
 		{
-			checkInput("Enter a Valid Price: ");
+			checkInput("Enter a Valid Price: "); // Notifies the user that the code is invalid and prompts the "argument" message about the error
 		}
 
 		cout << "Enter Quantity: ";
-		while (!(cin >> _Product[numOfProducts].productQuantity) || _Product[numOfProducts].productQuantity < 0)
+		while (!(cin >> _Product[numOfProducts].productQuantity) || _Product[numOfProducts].productQuantity < 0) // Code checks if the quantity is valid by checking if input is not negative
 		{
-			checkInput("Enter a Valid Quantity: ");
+			checkInput("Enter a Valid Quantity: "); // Notifies the user that the code is invalid and prompts the "argument" message about the error
 		}
 
-		numOfProducts += 1;
-		cout << endl;
+		numOfProducts += 1; // Increase the amount of products by one because one was added
 	};
 
-	void removeProduct()
+	void removeProduct() // Function removes the desired product from inventory
 	{
 		cout << "Note: If ID Doesn't Exist, Nothing Will Delete" << endl;
 		cout << "Type Product ID to Remove Product: ";
-		while (!(cin >> removeID))
+		while (!(cin >> removeID)) // Code checks if input ID is valid for product removal
 		{
-			checkInput("Enter a Valid ID: ");
+			checkInput("Enter a Valid ID: "); // Notifies the user that the code is invalid and prompts the "argument" message about the error
 		}
 
-		for (int i = 0; i < numOfProducts; i++)
+		for (int i = 1; i < numOfProducts; i++) // Loop through the code as many products available
 		{
-			if (removeID == _Product[i].productID)
+			if (removeID == _Product[i].productID) // Checks if the ID from user input matches an ID in the inventory for a product for removal
 			{
 				for (int indexLocation = i; indexLocation < numOfProducts - 1; indexLocation++)
 				{
@@ -77,22 +75,21 @@ public:
 		}
 		numOfProducts -= 1;
 		cout << "Product Removed" << endl;
-		cout << endl;
 	};
 
-	void displayInfo()
+	void displayInfo() // Function to display information about a certain product information
 	{
 		cout << "Note: If ID Doesn't Exist, Nothing Will Display" << endl;
 		cout << "Type Product ID to Display Info: ";
-		while (!(cin >> displayID))
+		while (!(cin >> displayID)) // Code checks if input ID is valid for product display
 		{
-			checkInput("Enter a Valid ID: ");
+			checkInput("Enter a Valid ID: "); // Notifies the user that the code is invalid and prompts the "argument" message about the error
 		}
 
 		cout << "Product Info: " << endl;
 		cout << "--------------------" << endl;
 
-		for (int i = 0; i < numOfProducts; i++)
+		for (int i = 1; i < numOfProducts; i++)
 		{
 			if (displayID == _Product[i].productID)
 			{
@@ -106,11 +103,11 @@ public:
 		cout << "--------------------" << endl;
 	};
 
-	void displayInventory()
+	void displayInventory() // Function to display entire inventory
 	{
-		cout << "Entire Inventory: " << endl;
+		cout << "Inventory: " << endl;
 		cout << "--------------------" << endl;
-		for (int i = 0; i < numOfProducts; i++)
+		for (int i = 1; i < numOfProducts; i++)
 		{
 			cout << "Product ID: " << _Product[i].productID << endl;
 			cout << "Product Name: " << _Product[i].productName << endl;
@@ -121,7 +118,7 @@ public:
 	};
 };
 
-void checkInput(string message)
+void checkInput(string message) // Function that prompts the user the input is invalid and takes a "message argument" that notifies them the issue
 {
 	cout << "Invalid Input." << endl;
 	cout << message;

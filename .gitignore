@@ -1,9 +1,6 @@
+.gitignore
 discussion3
-
 .vscode
-
-main
-
-inventoryClass
-
 main_review
+tempCodeRunnerFile.cpp
+

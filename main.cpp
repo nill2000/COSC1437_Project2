@@ -25,8 +25,8 @@ int main()
 	while (runMenu)
 	{
 		menuPrompt();
-		while (!(cin >> menuChoice) || menuChoice <= 0 || menuChoice >= 6) // Code checks to see if input is an integer and between 0 and 5 because there are only four menu options - 1, 2, 3, or 4.
-		{																   // If not, loop will continue until input is either 1, 2, 3, or 4.
+		while (!(cin >> menuChoice) || menuChoice <= 0 || menuChoice >= 6) // Code checks to see if input is an integer and between 0 and 5 because there are only five menu options - 1, 2, 3, 4, or 5.
+		{																   // If not, loop will continue until input is either 1, 2, 3, 4, or 5.
 			checkInput("Menu Choice 1/2/3/4/5: ");
 		}
 
